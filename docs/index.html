@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title> 聆鉴帮助文档</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Description" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
@@ -13,6 +13,7 @@
     <script src="./assets/js/index.min.js"></script>
   </head>
   <body>
+    <div class="title"></div>
     <div id="app"></div>
     <script>
       window.$docsify = {
@@ -54,13 +55,25 @@
         plugins: [
           function (hook, vm) {
             hook.beforeEach(function (html) {})
-            // hook.afterEach(function (html, next) {
-            //   // 解析成 html 后调用。
-            //   // beforeEach 和 afterEach 支持处理异步逻辑
-            //   // ...
-            //   // 异步处理完成后调用 next(html) 返回结果
-            //   next(html)
-            // })
+            hook.afterEach(function (html, next) {
+              setTimeout(() => {
+                let sesstionLink = document.querySelectorAll(".section-link")
+                let arr = []
+                for (const iterator of sesstionLink) {
+                  arr.push(decodeURIComponent(iterator.hash.split("=")[1])) // #/?id=前言 取出标题
+                }
+
+                var str = arr.join(" ") //数组转字符串 输出标题
+                console.log(str)
+              }, 1000)
+
+              // console.log(html)
+              // 解析成 html 后调用。
+              // beforeEach 和 afterEach 支持处理异步逻辑
+              // ...
+              // 异步处理完成后调用 next(html) 返回结果
+              next(html)
+            })
           },
         ],
       }
