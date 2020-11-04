@@ -13,22 +13,22 @@
     <script src="./assets/js/index.min.js"></script>
   </head>
   <body>
-    <div class="title"></div>
     <div id="app"></div>
     <script>
       window.$docsify = {
         name: "聆鉴帮助文档",
         // coverpage: true,
         // loadNavbar: true,
-        homepage: "BDAlogo/README.md",
+        homepage: "BDAlogo/README.md", //默认为README.md 首页设置，路径为/时，会找到该文件
         basePath: "./contents/", // 在根目录的contents文件夹下查找内容
         // mergeNavbar: true, //Navbar将在小屏幕上与侧边栏合并。
-        search: "auto", // 默认值
-        search: [
-          "/", //  /README.md
-          //   "/contents/", // => /contents/README.md
-        ],
+        // search: "auto", // 默认值
+        // search: [
+        //   "/", //  /README.md
+        //   //   "/contents/", // => /contents/README.md
+        // ],
         search: {
+          depth: 6, // 搜索标题的最大层级, 1 - 6
           noData: {
             "/": "换个关键字试试吧",
           },
